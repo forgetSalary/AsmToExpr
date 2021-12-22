@@ -1,0 +1,5 @@
+#include "common.cpp"
+#include "lex.cpp"
+#include "expr.cpp"
+#include "parse.cpp"
+#include "test.cpp"

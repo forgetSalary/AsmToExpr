@@ -1,0 +1,5 @@
+﻿  main.cpp
+G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\main.cpp(190,5): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\main.cpp(191,9): error C2065: 'out': undeclared identifier
+G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\main.cpp(191,13): error C2143: syntax error: missing ';' before 'constant'
+G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\main.cpp(192,5): error C2143: syntax error: missing ';' before '}'
