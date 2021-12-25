@@ -1,6 +1,10 @@
+mov eax, 1
+mov ebx, 1
+
 mov eax, 1; eax = 1
 add eax, 2; eax = 1+2
-inc eax; eax = 1+2
+inc eax; eax = 1+2+1
+
 sub eax, 3; eax = (1+2+1)-3
 
 mov ebx, 3; eax = 3

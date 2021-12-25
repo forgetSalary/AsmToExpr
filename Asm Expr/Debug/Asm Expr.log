@@ -1,19 +1,4 @@
 ﻿  main.cpp
 G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\lex.cpp(79,25): warning C4244: '=': conversion from 'uint64_t' to 'uint32_t', possible loss of data
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(28,42): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(44,4): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(47,4): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(50,4): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(53,4): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(61,30): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(64,4): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\parse.cpp(67,4): warning C4291: 'void *operator new(size_t,Arena *)': no matching operator delete found; memory will not be freed if initialization throws an exception
-G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\common.cpp(52): message : see declaration of 'operator new'
+G:\Уник\3 Курс\Трансляторы\Asm Expr\Asm Expr\main.cpp(17,19): warning C4804: '<=': unsafe use of type 'bool' in operation
   Asm Expr.vcxproj -> G:\Уник\3 Курс\Трансляторы\Asm Expr\Debug\Asm Expr.exe

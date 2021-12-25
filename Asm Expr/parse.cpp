@@ -1,31 +1,35 @@
 Expr* register_expresions[reg_count+1];
+Expr* last_parsed;
 std::stack<Expr*>* stack;
 Lex* lex;
 
-void parse_cmd(Arena* arena) {
-#define NEW_EXPR(T)\
-if (!register_expresions[reg_kind_left]) { lex->fatal("Register is empty"); }\
-if (typeid(*register_expresions[reg_kind_left]) == typeid(T)) {\
-	dynamic_cast<T*>(register_expresions[reg_kind_left])->push(right);\
-}\
-else {\
-	temp = register_expresions[reg_kind_left];\
-	register_expresions[reg_kind_left] = new(arena) T({ temp, right });\
+void parse_expr(Expr*& left, Expr* right,Arena* arena,EExprOperator _op) {
+	if (!left) { lex->fatal("Register is empty"); }
+	Expr* temp;
+	if (typeid(left) == typeid(ExprList)) {
+		if (dynamic_cast<ExprList*>(left)->op() == _op) {
+			dynamic_cast<ExprList*>(left)->push(right);
+			return;
+		}
+	}
+	temp = left;
+	left = new(arena) ExprList(_op, { temp, right });
 }
 
+void parse_cmd(Arena* arena) {
 	CmdKind cmd_kind = lex->cmd_kind();
-	RegKind reg_kind_left;
+	lex->next_token();
+	RegKind reg_kind_left = lex->reg_kind();
+	lex->expect_token(TOKEN_REG);
+	Expr*& left = register_expresions[reg_kind_left];
+
 	RegKind reg_kind_right;
 	Expr* right = NULL;
-	Expr* temp;
-	lex->next_token();
-	reg_kind_left = lex->reg_kind();
-	lex->expect_token(TOKEN_REG);
 	if (lex->is_token(TOKEN_COMMA)) {
 		lex->next_token();
 
 		if (lex->is_token(TOKEN_NUMBER)) {
-			right = new(arena) Value(lex->number());
+			right = new(arena) ValueExpr(lex->number());
 		}
 		else if (lex->is_token(TOKEN_REG)) {
 			reg_kind_right = lex->reg_kind();
@@ -38,19 +42,19 @@ else {\
 		}
 		switch (cmd_kind) {
 		case CMD_MOV:
-			register_expresions[reg_kind_left] = right;
+			left = right;
 			break;
 		case CMD_ADD:
-			NEW_EXPR(Add);
+			parse_expr(left, right,arena,EExprOperator::ADD);
 			break;
 		case CMD_SUB:
-			NEW_EXPR(Sub);
+			parse_expr(left, right, arena, EExprOperator::SUB);
 			break;
 		case CMD_MUL:
-			NEW_EXPR(Mul);
+			parse_expr(left, right, arena, EExprOperator::MUL);
 			break;
 		case CMD_DIV:
-			NEW_EXPR(Div);
+			parse_expr(left, right, arena, EExprOperator::DIV);
 			break;
 		default:
 			break;
@@ -58,13 +62,13 @@ else {\
 	}
 	else {
 		reg_kind_right = lex->reg_kind();
-		right = new (arena) Value(1);
+		right = new (arena) ValueExpr(1);
 		switch (cmd_kind) {
 		case CMD_INC:
-			NEW_EXPR(Add);
+			parse_expr(left, right, arena, EExprOperator::ADD);
 			break;
 		case CMD_DEC:
-			NEW_EXPR(Sub);
+			parse_expr(left, right, arena, EExprOperator::SUB);
 			break;
 		/*case CMD_PUSH:
 			stack.push(register_expresions[reg_kind_left]);
@@ -77,6 +81,7 @@ else {\
 			break;
 		}
 	}
+	last_parsed = right;
 #undef NEW_EXPR
 }
 

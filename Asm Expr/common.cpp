@@ -53,6 +53,8 @@ void* operator new(size_t size, Arena* arena) {
     return arena->allocate(size);
 }
 
+void operator delete(void* ptr, Arena* arena) {}
+
 char* read_file(const char* path) {
     FILE* file = fopen(path, "rb");
     if (!file) {
